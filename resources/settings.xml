@@ -7,6 +7,9 @@
     </category>
     <category label="32002">
         <setting label="32011" type="bool" id="randomitems_unplayed" default="true"/>
+        <setting label="32025" type="bool" id="peridic_update" default="false"/>
+        <setting label="32026" type="lsep" visible="eq(-1,false)"/>
+        <setting label="32027" type="number" id="periodic_update_interval" default="10" visible="eq(-2,true)"/>
     </category>
     <category label="32009">
         <setting label="32011" type="bool" id="recentitems_unplayed" default="true"/>

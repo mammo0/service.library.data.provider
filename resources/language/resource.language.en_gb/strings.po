@@ -112,3 +112,14 @@ msgctxt "#32024"
 msgid "Recommended Music Videos"
 msgstr ""
 
+msgctxt "#32025"
+msgid "Update the random items periodically"
+msgstr ""
+
+msgctxt "#32026"
+msgid "The random items now get updated only after a database update"
+msgstr ""
+
+msgctxt "#32027"
+msgid "The update interval in minutes"
+msgstr ""

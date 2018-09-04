@@ -61,6 +61,7 @@ class Main:
         self.WINDOW = xbmcgui.Window(10000)
         self.Player = Widgets_Player(action=self._update)
         self.Monitor = Widgets_Monitor(update_listitems=self._update)
+        self._update_settings()
 
     def _fetch_random(self):
         LIBRARY._fetch_random_movies()
@@ -92,12 +93,14 @@ class Main:
                 self.Monitor.update_listitems = None
                 self.Player.action = None
                 break
-            #if not xbmc.Player().isPlayingVideo():
-            #    # Update random items
-            #    count += 1
-            #    if count == 1200:  # 10 minutes
-            #        self._fetch_random()
-            #        count = 0    # reset counter
+            
+            # update random items periodically if it's set and no video is playing
+            if self.periodic_update == True and \
+                    not xbmc.Player().isPlayingVideo():
+                count += 1
+                if count == self.periodic_update_interval:
+                    self._fetch_random()
+                    count = 0    # reset counter
 
     def _update(self, type):
         xbmc.sleep(1000)
@@ -120,7 +123,17 @@ class Main:
         elif type == 'musicvideo':
             LIBRARY._fetch_recent_musicvideos()
         
-        self._fetch_random()
+        # check if the settings were updated
+        self._update_settings()
+        
+        # update the random items only on DB update
+        if self.periodic_update == False and \
+                type == 'video':
+            self._fetch_random()
+    
+    def _update_settings(self):
+        self.periodic_update = ADDON.getSetting("periodic_update") == 'true'
+        self.periodic_update_interval = int(ADDON.getSetting("periodic_update_interval")) * 60 # get the interval in seconds
 
 
 class Widgets_Monitor(xbmc.Monitor):
