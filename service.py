@@ -92,12 +92,12 @@ class Main:
                 self.Monitor.update_listitems = None
                 self.Player.action = None
                 break
-            if not xbmc.Player().isPlayingVideo():
-                # Update random items
-                count += 1
-                if count == 1200:  # 10 minutes
-                    self._fetch_random()
-                    count = 0    # reset counter
+            #if not xbmc.Player().isPlayingVideo():
+            #    # Update random items
+            #    count += 1
+            #    if count == 1200:  # 10 minutes
+            #        self._fetch_random()
+            #        count = 0    # reset counter
 
     def _update(self, type):
         xbmc.sleep(1000)
@@ -119,6 +119,8 @@ class Main:
             LIBRARY._fetch_recent_albums()
         elif type == 'musicvideo':
             LIBRARY._fetch_recent_musicvideos()
+        
+        self._fetch_random()
 
 
 class Widgets_Monitor(xbmc.Monitor):
