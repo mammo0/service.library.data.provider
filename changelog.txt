@@ -1,3 +1,6 @@
+[B]1.0.3.2[/B]
+- Let the user set the interval of updating the random items 
+
 [B]0.1.6[/B]
 - Enable context menu/info
 

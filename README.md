@@ -9,7 +9,7 @@ INFORMATION FOR SKINNERS
 ============================
 
 Include the following in your addon.xml
-`<import addon="service.library.data.provider" version="0.0.4"/>`
+`<import addon="service.library.data.provider" version="1.0.3.2"/>`
 
 Load a list with this content tag to have the list use cached data automatically refresh:
 `<content target="video">plugin://service.library.data.provider?type=randommovies&amp;reload=$INFO[Window.Property(randommovies)]</content>`
